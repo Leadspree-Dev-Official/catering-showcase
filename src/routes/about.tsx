@@ -5,10 +5,10 @@ import plating from "@/assets/post-plating.jpg";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — Saveur & Co. Catering" },
-      { name: "description", content: "Meet the Brooklyn kitchen behind Saveur & Co. — chef Marco, our team, and how we source." },
-      { property: "og:title", content: "About — Saveur & Co. Catering" },
-      { property: "og:description", content: "Meet the Brooklyn kitchen behind Saveur & Co." },
+      { title: "About — Om Shree Krishna Caterer" },
+      { name: "description", content: "Learn more about Om Shree Krishna Caterer, providing catering and catering equipment rental services in Howrah and Kolkata." },
+      { property: "og:title", content: "About — Om Shree Krishna Caterer" },
+      { property: "og:description", content: "Catering and catering equipment rental services in Howrah and Kolkata." },
       { property: "og:type", content: "website" },
     ],
   }),
@@ -21,32 +21,31 @@ function About() {
       <section className="border-b border-border">
         <div className="mx-auto grid max-w-6xl gap-12 px-6 py-16 md:grid-cols-2 md:items-center">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Our story</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">About us</p>
             <h1 className="mt-3 font-display text-5xl font-bold md:text-6xl">
-              A kitchen built around the season.
+              Trusted catering for every occasion.
             </h1>
             <p className="mt-6 text-lg text-muted-foreground">
-              Saveur &amp; Co. began in a 400-square-foot Brooklyn kitchen in 2016. Nine years
-              later, we've catered everything from City Hall elopements to 300-guest weddings —
-              and we still cook every menu ourselves.
+              Om Shree Krishna Caterer provides professional catering services for weddings, parties,
+              corporate events, family celebrations and other special occasions across Howrah and Kolkata.
             </p>
             <p className="mt-4 text-muted-foreground">
-              We source from farms within 200 miles, cure our own charcuterie, bake our own bread,
-              and refuse to serve anything we wouldn't cook for family.
+              We also provide catering equipment rental services, helping event hosts and businesses
+              arrange the essential equipment needed for smooth and successful functions.
             </p>
           </div>
-          <img src={plating} alt="Chef plating a dish" className="rounded-2xl object-cover" />
+          <img src={plating} alt="Catering food preparation" className="rounded-2xl object-cover" />
         </div>
       </section>
 
       <section className="bg-secondary/40 py-20">
         <div className="mx-auto max-w-6xl px-6">
-          <h2 className="font-display text-3xl font-bold md:text-4xl">The team</h2>
+          <h2 className="font-display text-3xl font-bold md:text-4xl">Our services</h2>
           <div className="mt-10 grid gap-8 md:grid-cols-3">
             {[
-              { name: "Marco Alvarez", role: "Executive Chef & Owner", img: chef },
-              { name: "Priya Rao", role: "Head of Events", img: chef },
-              { name: "Jonah Fields", role: "Pastry Chef", img: chef },
+              { name: "Event Catering", role: "Weddings, parties & celebrations", img: chef },
+              { name: "Corporate Catering", role: "Professional food service for business events", img: chef },
+              { name: "Equipment Rental", role: "Catering equipment for events and functions", img: chef },
             ].map((p) => (
               <div key={p.name} className="rounded-2xl border border-border bg-card p-6 text-center">
                 <img
@@ -66,9 +65,9 @@ function About() {
       <section className="mx-auto max-w-6xl px-6 py-20">
         <div className="grid gap-8 md:grid-cols-3">
           {[
-            { n: "01", t: "Seasonal sourcing", b: "Menus change with what's coming out of the ground — never the other way around." },
-            { n: "02", t: "In-house everything", b: "Bread, charcuterie, pickles, ice cream — made in our Brooklyn kitchen, not bought in." },
-            { n: "03", t: "Hospitality first", b: "Our front-of-house team is trained to make your event feel effortless from load-in to last dance." },
+            { n: "01", t: "Quality service", b: "We focus on dependable food and professional service for every event." },
+            { n: "02", t: "Complete solutions", b: "From catering to essential equipment rentals, we help make event planning simpler." },
+            { n: "03", t: "Local expertise", b: "Serving customers across Howrah and Kolkata with practical catering solutions for every occasion." },
           ].map((v) => (
             <div key={v.n}>
               <div className="font-display text-4xl font-bold text-primary">{v.n}</div>
