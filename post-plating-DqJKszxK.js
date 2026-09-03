@@ -1,1 +1,0 @@
-var e=`/assets/post-plating-C-ydpqzQ.jpg`;export{e as t};
