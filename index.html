@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Saveur &amp; Co. — Brooklyn Catering for Weddings &amp; Events</title>
+    <title>Om Shree Krishna Caterer — Catering &amp; Equipment Rental</title>
     <meta
       name="description"
-      content="Chef-driven catering in Brooklyn. Seasonal menus, seamless service for weddings, corporate events, and private dinners."
+      content="Om Shree Krishna Caterer provides catering and catering equipment rental services for weddings, parties, corporate events and celebrations in Kolkata and Howrah."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,6 +14,46 @@
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
+    <script>
+      (() => {
+        const replacements = [
+          ["Saveur & Co.", "Om Shree Krishna Caterer"],
+          ["Saveur &amp; Co.", "Om Shree Krishna Caterer"],
+          ["Brooklyn Catering for Weddings & Events", "Catering & Equipment Rental"],
+          ["Brooklyn", "Howrah"],
+          ["NYC", "Kolkata"],
+          ["hello@saveurandco.com", ""],
+          ["(718) 555-0142", "+91 94332 51917"],
+          ["221 Kent Ave, Brooklyn NY", "32, Jelia Para Ln, Babudanga, Salkia, Howrah, West Bengal 711106"]
+        ];
+        const replaceText = (value) => {
+          if (typeof value !== "string") return value;
+          return replacements.reduce((out, [from, to]) => out.split(from).join(to), value);
+        };
+        const clean = () => {
+          document.title = replaceText(document.title);
+          document.querySelectorAll("meta, [title], [aria-label], input, textarea").forEach((el) => {
+            for (const attr of ["content", "title", "aria-label", "placeholder", "value"]) {
+              if (el.hasAttribute(attr)) {
+                const oldValue = el.getAttribute(attr);
+                const newValue = replaceText(oldValue);
+                if (newValue !== oldValue) el.setAttribute(attr, newValue);
+              }
+            }
+          });
+          const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+          const nodes = [];
+          while (walker.nextNode()) nodes.push(walker.currentNode);
+          nodes.forEach((node) => {
+            const next = replaceText(node.nodeValue);
+            if (next !== node.nodeValue) node.nodeValue = next;
+          });
+        };
+        new MutationObserver(clean).observe(document.documentElement, { childList: true, subtree: true, characterData: true });
+        if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", clean);
+        else clean();
+      })();
+    </script>
     <script type="module" crossorigin src="/catering-showcase/assets/static-DE8glphK.js"></script>
     <link rel="stylesheet" crossorigin href="/catering-showcase/assets/styles-Wj3YGKOz.css">
   </head>
