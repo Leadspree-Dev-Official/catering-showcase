@@ -4,54 +4,49 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Om Shree Krishna Caterer — Catering &amp; Equipment Rental</title>
-    <meta
-      name="description"
-      content="Om Shree Krishna Caterer provides catering and catering equipment rental services for weddings, parties, corporate events and celebrations in Kolkata and Howrah."
-    />
+    <meta name="description" content="Om Shree Krishna Caterer provides catering and catering equipment rental services for weddings, parties, corporate events and celebrations in Kolkata and Howrah." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <style>
+      header a .font-display,
+      footer .font-display { font-size: 0 !important; }
+      header a .font-display::after {
+        content: "Om Shree Krishna Caterer";
+        font-size: 1.5rem;
+        line-height: 1.25;
+      }
+      footer .font-display::after {
+        content: "Om Shree Krishna Caterer";
+        font-size: 1.25rem;
+        line-height: 1.25;
+      }
+      @media (max-width: 639px) {
+        header a .font-display::after { font-size: 1.25rem; }
+      }
+    </style>
     <script>
       (() => {
-        const replacements = [
-          ["Saveur & Co.", "Om Shree Krishna Caterer"],
-          ["Saveur &amp; Co.", "Om Shree Krishna Caterer"],
-          ["Brooklyn Catering for Weddings & Events", "Catering & Equipment Rental"],
-          ["Brooklyn", "Howrah"],
-          ["NYC", "Kolkata"],
-          ["hello@saveurandco.com", ""],
-          ["(718) 555-0142", "+91 94332 51917"],
-          ["221 Kent Ave, Brooklyn NY", "32, Jelia Para Ln, Babudanga, Salkia, Howrah, West Bengal 711106"]
-        ];
-        const replaceText = (value) => {
-          if (typeof value !== "string") return value;
-          return replacements.reduce((out, [from, to]) => out.split(from).join(to), value);
-        };
         const clean = () => {
-          document.title = replaceText(document.title);
-          document.querySelectorAll("meta, [title], [aria-label], input, textarea").forEach((el) => {
-            for (const attr of ["content", "title", "aria-label", "placeholder", "value"]) {
-              if (el.hasAttribute(attr)) {
-                const oldValue = el.getAttribute(attr);
-                const newValue = replaceText(oldValue);
-                if (newValue !== oldValue) el.setAttribute(attr, newValue);
-              }
-            }
-          });
+          document.title = document.title.replace(/Saveur\s*&?\s*Co\.?/gi, "Om Shree Krishna Caterer");
           const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
           const nodes = [];
           while (walker.nextNode()) nodes.push(walker.currentNode);
           nodes.forEach((node) => {
-            const next = replaceText(node.nodeValue);
-            if (next !== node.nodeValue) node.nodeValue = next;
+            if (!node.nodeValue) return;
+            let v = node.nodeValue;
+            v = v.replace(/Saveur\s*&?\s*Co\.?/gi, "Om Shree Krishna Caterer");
+            v = v.replace(/Saveur/gi, "Om Shree Krishna Caterer");
+            v = v.replace(/Brooklyn/gi, "Howrah").replace(/NYC/gi, "Kolkata");
+            v = v.replace(/hello@saveurandco\.com/gi, "");
+            v = v.replace(/\(718\)\s*555-0142/g, "+91 94332 51917");
+            v = v.replace(/221 Kent Ave, Brooklyn NY/gi, "32, Jelia Para Ln, Babudanga, Salkia, Howrah, West Bengal 711106");
+            if (v !== node.nodeValue) node.nodeValue = v;
           });
         };
+        clean();
+        document.addEventListener("DOMContentLoaded", clean);
         new MutationObserver(clean).observe(document.documentElement, { childList: true, subtree: true, characterData: true });
-        if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", clean);
-        else clean();
       })();
     </script>
     <script type="module" crossorigin src="/catering-showcase/assets/static-DE8glphK.js"></script>
